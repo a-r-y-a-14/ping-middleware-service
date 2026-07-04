@@ -6,7 +6,7 @@ from collections import defaultdict, deque
 import uuid
 import time
 
-EMAIL = "YOUR_LOGGED_IN_EMAIL"
+EMAIL = "25f1002209@ds.study.iitm.ac.in"
 
 ALLOWED_ORIGIN = "https://app-11215s.example.com"
 EXAM_ORIGIN = "https://exam.sanand.workers.dev"

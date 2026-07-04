@@ -5,6 +5,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from collections import defaultdict, deque
 import uuid
 import time
+from fastapi import Response
 
 EMAIL = "25f1002209@ds.study.iitm.ac.in"
 
@@ -18,7 +19,10 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[ALLOWED_ORIGIN, EXAM_ORIGIN],
+    allow_origins=[
+        ALLOWED_ORIGIN,
+        "https://exam.sanand.workers.dev",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -56,3 +60,7 @@ async def ping(request: Request):
         "email": EMAIL,
         "request_id": request.state.request_id
     }
+
+@app.options("/ping")
+async def ping_options():
+    return Response(status_code=204)
